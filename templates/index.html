@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Czifra Adoryan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link href="{{ url_for('static', filename='css/styles.css')}}" rel="stylesheet">
+
+    <link rel="icon" href="static/favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Serif&family=Sacramento&display=swap"
+          rel="stylesheet">
+    <!--    font awesome-->
+    <script src="https://kit.fontawesome.com/142a7d352d.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<!--navbar-->
+<nav class="navbar navbar-expand-lg coloration">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('home') }}">
+            <img class="avatar" src="static/images/avatar.png">
+        </a>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link black" aria-current="page" href="{{ url_for('about_me') }}">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Work</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('contact') }}">Contact me</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="top-container">
+    <img class="top-cloud" src="static/images/cloud.png">
+    <h1>I'm Adoryan .</h1>
+    <h2 class="prog">a programmer.</h2>
+    <img class="bottom-cloud" src="static/images/cloud.png">
+    <img class="mountain" src="static/images/land.png">
+</div>
+
+<div class="middle-container">
+    <div class="profile">
+        <img class="size" src="static/images/adorica.jpg" alt="">
+        <h2>Hello.</h2>
+        <p class="descript">I am a first year student at West University of Timişoara. I'm currently studying Digital
+            Media. I have a
+            passion for living a healthy lifestyle and recently fell in love with programming.</p>
+    </div>
+    <hr class="rule-property">
+    <div class="skills">
+        <div class="my-skills"><h2 class="head">My Skills</h2></div>
+        <div class="skill-row">
+            <img class="resize" src="static/images/gym.jpg" alt="">
+            <h3 class="skills-description">Fitness and Bodybuilding</h3>
+            <p class="description">I started going to the gym when I was 15 years old. It was love at first sight, after
+                the years have passed, I started teaching others about the healthy lifestyle.</p>
+        </div>
+        <div class="skill-row">
+            <img class="computer" src="static/images/comp.jpg" alt="">
+            <h3 class="skills-description">Programming</h3>
+            <p class="description">My second recent thing that really got my attention is programming. I can help you
+                both in front-end and backend development, but I'm more focused on the backend part.</p>
+        </div>
+    </div>
+    <hr class="rule-property">
+    <div class="">
+        <div class="get-in"><h2 class="touch tch">Get In Touch</h2>
+            <h3 class="tch tc">I'm currently available for internships.</h3></div>
+    </div>
+    <p class="final">If you think I can help you in a project, or would like to hire me, Please contact me.</p>
+    <a href="{{ url_for('contact') }}" class="myButton"><i class="email fa-solid fa-envelope"></i> CONTACT</a>
+</div>
+
+
+{% include "footer.html" %}
+</body>
+
+</html>
