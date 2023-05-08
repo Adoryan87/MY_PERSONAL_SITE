@@ -4,13 +4,15 @@ from wtforms import StringField, TextAreaField
 from wtforms.validators import DataRequired, Email
 import smtplib
 import os
+from dotenv.main import load_dotenv
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.urandom(32)
+app.config['SECRET_KEY'] = SECRET_KEY
+load_dotenv()
 
 MY_EMAIL = os.environ.get("MY_EMAIL")
 MY_PASSWORD = os.environ.get("MY_PASSWORD")
-
 
 class ContactForm(FlaskForm):
     name = StringField("Name", validators=[DataRequired()])
@@ -33,7 +35,7 @@ def about_me():
 def contact():
     form = ContactForm()
     if form.validate_on_submit():
-        with smtplib.SMTP("smtp.gmail.com", port=int(os.environ.get("SECRET_KEY"))) as connection:
+        with smtplib.SMTP("smtp.gmail.com", port=int(os.environ.get("EMAIL_PORT"))) as connection:
             connection.starttls()
             connection.login(MY_EMAIL, MY_PASSWORD)
             connection.sendmail(from_addr=MY_EMAIL,
