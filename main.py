@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, EmailField
+from wtforms import StringField, TextAreaField
 from wtforms.validators import DataRequired, Email
 import smtplib
 import os
@@ -14,7 +14,7 @@ MY_PASSWORD = os.environ.get("MY_PASSWORD")
 
 class ContactForm(FlaskForm):
     name = StringField("Name", validators=[DataRequired()])
-    email = EmailField("Email", validators=[DataRequired(), Email()])
+    email = StringField("Email", validators=[DataRequired(), Email()])
     subject = StringField("Subject", validators=[DataRequired()])
     message = TextAreaField("Message", validators=[DataRequired()])
 
