@@ -35,7 +35,7 @@ def about_me():
 def contact():
     form = ContactForm()
     if form.validate_on_submit():
-        with smtplib.SMTP("smtp.gmail.com", port=int(os.environ.get("EMAIL_PORT"))) as connection:
+        with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
             connection.starttls()
             connection.login(MY_EMAIL, MY_PASSWORD)
             connection.sendmail(from_addr=MY_EMAIL,
