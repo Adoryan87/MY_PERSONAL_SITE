@@ -1,7 +1,6 @@
 from flask import Flask, render_template, redirect, url_for
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField
-from wtforms.fields.html5 import EmailField
+from wtforms import StringField, TextAreaField, EmailField
 from wtforms.validators import DataRequired, Email
 import smtplib
 import os
