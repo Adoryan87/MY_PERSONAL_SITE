@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField
+from wtforms.fields.html5 import EmailField
 from wtforms.validators import DataRequired, Email
 import smtplib
 import os
@@ -16,7 +17,7 @@ MY_PASSWORD = os.environ.get("MY_PASSWORD")
 
 class ContactForm(FlaskForm):
     name = StringField("Name", validators=[DataRequired()])
-    email = StringField("Email", validators=[DataRequired(), Email()])
+    email = EmailField("Email", validators=[DataRequired(), Email()])
     subject = StringField("Subject", validators=[DataRequired()])
     message = TextAreaField("Message", validators=[DataRequired()])
 
@@ -35,6 +36,7 @@ def about_me():
 def contact():
     form = ContactForm()
     if form.validate_on_submit():
+        print("YES")
         with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
             connection.starttls()
             connection.login(MY_EMAIL, MY_PASSWORD)
